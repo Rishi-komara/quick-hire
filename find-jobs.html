@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Find Jobs | Quick Hire</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      color: white;
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+    }
+
+    header h2 {
+      margin: 0;
+    }
+
+    .job-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .job-card {
+      background: white;
+      color: #333;
+      padding: 20px;
+      border-radius: 12px;
+      width: 300px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+      animation: fadeInUp 0.6s ease;
+    }
+
+    .job-card:hover {
+      transform: scale(1.05);
+    }
+
+    .job-title {
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+
+    .job-location,
+    .job-pay,
+    .job-category {
+      font-size: 0.95rem;
+      margin-top: 5px;
+    }
+
+    .apply-btn {
+      margin-top: 15px;
+      padding: 10px;
+      width: 100%;
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      color: white;
+      border: none;
+      font-weight: bold;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .apply-btn:hover {
+      background: linear-gradient(to right, #5a0eb4, #1d5ce2);
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h2>Quick Hire</h2>
+    <a href="index.html" style="color:white; text-decoration:none;">Home</a>
+  </header>
+
+  <div class="job-container">
+    <div class="job-card">
+      <div class="job-title">Delivery Executive</div>
+      <div class="job-category">Category: Delivery</div>
+      <div class="job-location">Location: Hyderabad</div>
+      <div class="job-pay">Pay: ₹500/day</div>
+      <button class="apply-btn">Apply Now</button>
+    </div>
+
+    <div class="job-card">
+      <div class="job-title">Sales Assistant</div>
+      <div class="job-category">Category: Sales</div>
+      <div class="job-location">Location: Vijayawada</div>
+      <div class="job-pay">Pay: ₹450/day</div>
+      <button class="apply-btn">Apply Now</button>
+    </div>
+
+    <div class="job-card">
+      <div class="job-title">Store Helper</div>
+      <div class="job-category">Category: Shop Help</div>
+      <div class="job-location">Location: Vizag</div>
+      <div class="job-pay">Pay: ₹400/day</div>
+      <button class="apply-btn">Apply Now</button>
+    </div>
+  </div>
+
+  <script>
+  const isLoggedIn = localStorage.getItem('quickhire_logged_in');
+  if (!isLoggedIn) {
+    alert("Please login to view available jobs.");
+    window.location.href = "login.html";
+  }
+</script>
+
+</body>
+</html>

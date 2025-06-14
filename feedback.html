@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Feedback | Quick Hire</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .feedback-box {
+      background: white;
+      color: #333;
+      max-width: 500px;
+      width: 100%;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      text-align: center;
+      animation: fadeIn 0.6s ease, slideUp 0.8s ease;
+    }
+
+    h2 {
+      margin-bottom: 15px;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+      border-radius: 8px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+
+    .stars {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin: 15px 0;
+    }
+
+    .stars span {
+      font-size: 2rem;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .stars span:hover,
+    .stars span.active {
+      transform: scale(1.2);
+      color: gold;
+    }
+
+    .btn {
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      color: white;
+      padding: 12px;
+      width: 100%;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 30px;
+      margin-top: 15px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      background: linear-gradient(to right, #5a0eb4, #1d5ce2);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(40px); }
+      to { transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="feedback-box">
+    <h2>Rate Your Job Experience</h2>
+    <div class="stars" id="starRating">
+      <span data-rating="1">★</span>
+      <span data-rating="2">★</span>
+      <span data-rating="3">★</span>
+      <span data-rating="4">★</span>
+      <span data-rating="5">★</span>
+    </div>
+    <textarea id="feedbackText" placeholder="Write your feedback here..." required></textarea>
+    <button class="btn" onclick="submitFeedback()">Submit Feedback</button>
+  </div>
+
+  <script>
+    const stars = document.querySelectorAll('#starRating span');
+    let selectedRating = 0;
+
+    stars.forEach(star => {
+      star.addEventListener('click', () => {
+        selectedRating = star.getAttribute('data-rating');
+        stars.forEach(s => s.classList.remove('active'));
+        for (let i = 0; i < selectedRating; i++) {
+          stars[i].classList.add('active');
+        }
+      });
+    });
+
+    function submitFeedback() {
+      const feedback = document.getElementById('feedbackText').value.trim();
+      if (selectedRating == 0 || feedback === "") {
+        alert("Please provide a star rating and feedback.");
+        return;
+      }
+
+      const entry = {
+        rating: selectedRating,
+        comment: feedback,
+        date: new Date().toLocaleString()
+      };
+
+      let feedbacks = JSON.parse(localStorage.getItem("quickhire_feedbacks")) || [];
+      feedbacks.push(entry);
+      localStorage.setItem("quickhire_feedbacks", JSON.stringify(feedbacks));
+
+      alert("Thank you for your feedback!");
+      document.getElementById('feedbackText').value = "";
+      stars.forEach(s => s.classList.remove('active'));
+    }
+  </script>
+</body>
+</html>

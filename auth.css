@@ -1,0 +1,132 @@
+body.modal-bg {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: radial-gradient(circle at top left, #1a2a6c, #b21f1f, #fdbb2d);
+  background-size: 300% 300%;
+  animation: animateBg 15s ease infinite;
+}
+
+.auth-modal {
+  background: #ffffff;
+  width: 100%;
+  max-width: 420px;
+  padding: 40px 30px;
+  border-radius: 14px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.6s ease, slideUp 1s ease;
+  text-align: center;
+}
+
+.auth-modal h2 {
+  margin-bottom: 25px;
+  color: #1e1e2f;
+  font-weight: 600;
+}
+
+.auth-modal input[type="text"],
+.auth-modal input[type="email"],
+.auth-modal input[type="password"] {
+  width: 100%;
+  padding: 13px 14px;
+  margin: 12px 0;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 15px;
+  transition: border 0.3s ease;
+}
+
+.auth-modal input:focus {
+  border-color: #6a11cb;
+  outline: none;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  text-align: left;
+  margin-top: 10px;
+  color: #444;
+}
+
+.checkbox-label input {
+  margin-right: 10px;
+}
+
+.checkbox-label a {
+  color: #6a11cb;
+  text-decoration: none;
+}
+
+.main-btn {
+  margin-top: 20px;
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  color: white;
+  padding: 13px;
+  width: 100%;
+  border: none;
+  font-size: 17px;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.4s ease, transform 0.2s ease;
+}
+
+.main-btn:hover {
+  background: linear-gradient(to right, #5a0eb4, #1d5ce2);
+  transform: scale(1.02);
+}
+
+.google-btn {
+  background-color: white;
+  color: #444;
+  border: 1px solid #ccc;
+  padding: 12px;
+  width: 100%;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+}
+
+.google-btn:hover {
+  background-color: #f5f5f5;
+}
+
+.or {
+  margin: 20px 0;
+  color: #999;
+}
+
+.switch {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.switch a {
+  color: #2575fc;
+  text-decoration: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes animateBg {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}

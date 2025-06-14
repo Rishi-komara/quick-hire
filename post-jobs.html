@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Post Jobs - QuickHire</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: linear-gradient(to right, #eef2f3, #8ec5fc);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      padding: 1rem 2rem;
+      background: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header h2 {
+      margin: 0;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .header a {
+      text-decoration: none;
+      color: #007bff;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .header a:hover {
+      color: #0056b3;
+    }
+
+    .main {
+      margin: auto;
+      padding: 2rem;
+      max-width: 800px;
+      background: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      text-align: center;
+      animation: fadeIn 1s ease;
+    }
+
+    .main h1 {
+      font-size: 2.2rem;
+      color: #1a1a1a;
+      margin-bottom: 1rem;
+    }
+
+    .main p {
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      color: white;
+      padding: 0.9rem 2rem;
+      border: none;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      background: linear-gradient(to right, #5a0eb4, #1d5ce2);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .main {
+        margin: 2rem 1rem;
+        padding: 1.5rem;
+      }
+
+      .main h1 {
+        font-size: 1.6rem;
+      }
+
+      .btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h2>QuickHire</h2>
+    <header>
+  <h2>Quick Hire</h2>
+  <a href="index.html">Home</a><br>
+  <a href="feedback.html">Feedback</a> <!-- ✅ Added -->
+</header>
+
+  </div>
+
+  <div class="main">
+    <h1>Post Jobs and Grow Your Team</h1>
+    <p><strong>0% commission</strong> for the first month! Valid for new companies in select cities.</p>
+    <button class="btn" onclick="window.location.href='postform.html'">Register Your Company</button>
+    
+
+  </div>
+</body>
+</html>

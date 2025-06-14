@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Post Job Form | Quick Hire</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form-wrapper {
+      background: white;
+      color: #333;
+      padding: 30px 40px;
+      border-radius: 16px;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      animation: fadeIn 0.6s ease, slideUp 0.8s ease;
+    }
+
+    .form-wrapper h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form input, form select, form textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    form textarea {
+      resize: vertical;
+      height: 100px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 30px;
+      color: white;
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      background: linear-gradient(to right, #5a0eb4, #1d5ce2);
+    }
+
+    .success {
+      text-align: center;
+      color: green;
+      margin-top: 10px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(40px); }
+      to { transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .form-wrapper {
+        padding: 25px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="form-wrapper">
+    <h2>Post a Job</h2>
+    <form id="jobForm">
+      <input type="text" id="title" placeholder="Job Title" required />
+      <input type="text" id="location" placeholder="Location" required />
+      <select id="category" required>
+        <option value="">Select Job Category</option>
+        <option value="sales">Sales</option>
+        <option value="delivery">Delivery</option>
+        <option value="helper">Shop Helper</option>
+        <option value="cleaning">Cleaning</option>
+        <option value="other">Others</option>
+      </select>
+      <textarea id="description" placeholder="Job Description" required></textarea>
+      <input type="number" id="pay" placeholder="Pay per Day (in ₹)" required />
+      <button type="submit" class="btn">Submit Job</button>
+      <div class="success" id="successMessage" style="display:none;">Job submitted successfully!</div>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("jobForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const job = {
+        title: document.getElementById("title").value.trim(),
+        location: document.getElementById("location").value.trim(),
+        category: document.getElementById("category").value,
+        description: document.getElementById("description").value.trim(),
+        pay: document.getElementById("pay").value.trim()
+      };
+
+      if (!job.title || !job.location || !job.category || !job.description || !job.pay) {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      // Store in localStorage
+      let jobs = JSON.parse(localStorage.getItem("quickhire_jobs")) || [];
+      jobs.push(job);
+      localStorage.setItem("quickhire_jobs", JSON.stringify(jobs));
+
+      // Show success message
+      document.getElementById("successMessage").style.display = "block";
+      document.getElementById("jobForm").reset();
+    });
+  </script>
+</body>
+</html>
